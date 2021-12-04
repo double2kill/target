@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { NModal, FormValidationError } from 'naive-ui'
-import { isAddItemPopupShow, addItemFormRef } from './index'
-import AddItemForm from './AddItemForm.vue'
+import { isItemPopupShow, itemFormRef, initialFormData } from './index'
+import ItemForm from './ItemForm.vue'
 
 const validFormData = (): Promise<boolean> => {
   return new Promise((resolve, reject) => {
-    addItemFormRef.value.validate((errors: FormValidationError) => {
+    itemFormRef.value.validate((errors: FormValidationError) => {
       if (!errors) {
         resolve(true)
       } else {
@@ -17,7 +17,7 @@ const validFormData = (): Promise<boolean> => {
 
 const handleSubmit = async () => {
   await validFormData()
-  await addItemFormRef.value.onSubmit()
+  await itemFormRef.value.onSubmit()
 }
 
 
@@ -25,7 +25,7 @@ const handleSubmit = async () => {
 
 <template>
   <n-modal
-    v-model:show="isAddItemPopupShow"
+    v-model:show="isItemPopupShow"
     :mask-closable="false"
     :show-icon="false"
     preset="dialog"
@@ -34,6 +34,6 @@ const handleSubmit = async () => {
     negative-text="算了"
     @positive-click="handleSubmit"
   >
-    <AddItemForm />
+    <ItemForm :initial-form-data="initialFormData" />
   </n-modal>
 </template>

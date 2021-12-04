@@ -1,10 +1,13 @@
 <script lang="ts" setup>
+import { TableColumns } from 'naive-ui/es/data-table/src/interface'
 import { NDataTable, NButton } from 'naive-ui'
-import { onMounted } from 'vue'
+import { onMounted, h } from 'vue'
 import { targetData, fetchTargetList, handleShowAddItemPopup } from './index'
-import AddItemPopup from './AddItemPopup.vue'
+import ItemPopup from './ItemPopup.vue'
+import Actions from './Actions.vue'
+import { TargetItem } from '../type'
 
-defineProps({
+const props = defineProps({
   isAdminMode: Boolean
 })
 
@@ -12,7 +15,7 @@ onMounted(() => {
   fetchTargetList()
 })
 
-const columns = [
+let columns: TableColumns<TargetItem> = [
   {
     title: '目标内容',
     key: '目标内容',
@@ -28,8 +31,25 @@ const columns = [
   {
     title: '用户名',
     key: '用户名'
-  }
+  },
 ]
+
+if (props.isAdminMode) {
+  columns.push({
+    title: '操作',
+    key: '操作',
+    render (rowData) {
+      return h(
+        Actions,
+        {
+          rowData,
+        },
+      )
+    }
+  })
+}
+
+
 </script>
 
 <template>
@@ -38,12 +58,16 @@ const columns = [
       v-if="isAdminMode"
       class="top-box"
     >
-      <n-button @click="handleShowAddItemPopup">
+      <n-button
+        data-test-id="添加"
+        @click="handleShowAddItemPopup"
+      >
         添加
       </n-button>
-      <AddItemPopup />
+      <ItemPopup />
     </div>
     <n-data-table
+      data-test-id="表格"
       :row-key="(item) => item.id"
       :columns="columns"
       :data="targetData"

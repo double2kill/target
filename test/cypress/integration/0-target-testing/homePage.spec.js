@@ -1,5 +1,5 @@
 import {ORIGIN, PORT} from '../../../../config'
-describe('测试表格', () => {
+describe('测试首页', () => {
     beforeEach(() => {
         cy.visit(`${ORIGIN}:${PORT}`)
     })

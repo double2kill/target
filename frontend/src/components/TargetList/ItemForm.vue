@@ -1,10 +1,15 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineProps, PropType } from 'vue'
 import { NForm, NFormItem, NInput, FormRules } from 'naive-ui'
 import { TargetFormData } from '../type'
-import { setAddItemFormRef, fetchTargetList } from './index'
-import { TARGET_LIST } from '../../../../constants/api'
-import axios from 'axios'
+import { setItemFormRef, handleAddItem, initialFormData, handleEditItem } from './index'
+
+defineProps({
+  initialFormData: {
+    type:  Object as PropType<TargetFormData>,
+    required: true
+  }
+})
 
 const formRef = ref(null)
 
@@ -22,8 +27,19 @@ const requiredValueValidator = (rule: any, value: any) => {
   return true
 }
 
+const handleSubmit = (formData: TargetFormData) => {
+  if (formData.id) {
+    handleEditItem(formData)
+    return
+  }
+  handleAddItem(formData)
+}
+
 onMounted(() => {
-  setAddItemFormRef(formRef.value)
+  formData.value = {
+    ...initialFormData.value
+  }
+  setItemFormRef(formRef.value)
 })
 
 const rules: FormRules = {
@@ -31,7 +47,7 @@ const rules: FormRules = {
     {
       required: true,
       validator: requiredValueValidator,
-      trigger: ['input', 'blur']
+      trigger: ['input', 'blur'],
     }
   ],
   '用户名': [
@@ -50,11 +66,6 @@ const rules: FormRules = {
   ]
 }
 
-const submitFormData = async () => {
-  await axios.post(TARGET_LIST, formData.value)
-  await fetchTargetList()
-}
-
 </script>
 
 <template>
@@ -62,7 +73,7 @@ const submitFormData = async () => {
     ref="formRef"
     :model="formData"
     :rules="rules"
-    @submit="submitFormData"
+    @submit="handleSubmit(formData)"
   >
     <n-form-item
       path="目标内容"
@@ -70,6 +81,7 @@ const submitFormData = async () => {
     >
       <n-input
         v-model:value="formData.目标内容"
+        data-test-id="目标内容"
         placeholder="请输入"
         @keydown.enter.prevent
       />
@@ -80,6 +92,7 @@ const submitFormData = async () => {
     >
       <n-input
         v-model:value="formData.用户名"
+        data-test-id="用户名"
         placeholder="请输入"
         @keydown.enter.prevent
       />
@@ -90,6 +103,7 @@ const submitFormData = async () => {
     >
       <n-input
         v-model:value="formData.计划完成时间"
+        data-test-id="计划完成时间"
         placeholder="请输入"
         @keydown.enter.prevent
       />
