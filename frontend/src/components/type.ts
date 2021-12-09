@@ -17,3 +17,12 @@ export type User = {
 declare global {
     interface Window { $message: any; }
 }
+
+export type LoginFormData = {
+    用户名: string;
+    密码: string;
+}
+
+export type LoginUser = {
+    用户名: string;
+}

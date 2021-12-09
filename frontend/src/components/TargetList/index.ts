@@ -1,11 +1,26 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { TargetItem, TargetFormData } from '../type'
 import axios from 'axios'
 import { TARGET_LIST } from '../../../../constants/api'
+import { loginUser } from '../Login/loginUser'
+
+export const isAdminMode = ref(false)
+export const setIsAdminMode = (value: boolean) => { isAdminMode.value = value}
 
 export const targetData = ref<TargetItem[]>([])
+
 export const fetchTargetList = async () => {
-  const result = await axios.get(TARGET_LIST)
+  const {用户名} = loginUser
+  if (!用户名) {
+    targetData.value = []
+    return
+  }
+  const params = isAdminMode.value
+    ? {}
+    : {
+      用户名
+    }
+  const result = await axios.get(TARGET_LIST, {params})
   targetData.value = result.data
 }
 
@@ -48,4 +63,8 @@ export const initialFormData = ref<TargetFormData>({
   目标内容: '',
   计划完成时间: '',
   用户名: '',
+})
+
+watch(loginUser, () => {
+  fetchTargetList()
 })

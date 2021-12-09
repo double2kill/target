@@ -3,6 +3,7 @@ import { ref, onMounted, defineProps, PropType } from 'vue'
 import { NForm, NFormItem, NInput, FormRules } from 'naive-ui'
 import { TargetFormData } from '../type'
 import { setItemFormRef, handleAddItem, initialFormData, handleEditItem } from './index'
+import { requiredValueValidator } from '../../utils/validator'
 
 defineProps({
   initialFormData: {
@@ -18,14 +19,6 @@ const formData = ref<TargetFormData>({
   用户名: '',
   计划完成时间: '',
 })
-
-const requiredValueValidator = (rule: any, value: any) => {
-  const {field} = rule
-  if (!value) {
-    return new Error(`${field}必填`)
-  }
-  return true
-}
 
 const handleSubmit = (formData: TargetFormData) => {
   if (formData.id) {

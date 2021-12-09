@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('login', (username = '刘晨') => {
+    cy.get('[data-test-id="登录"]').click()
+    cy.get('[data-test-id="登录弹窗"] [data-test-id="用户名"] input').focus().type(username)
+    cy.get('.n-dialog__action button.n-button--primary-type').click()
+})
+
+Cypress.Commands.add('logout', () => {
+    cy.get('[data-test-id="登出"]').click()
+})

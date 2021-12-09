@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import {NPageHeader, NSpace, NButton} from 'naive-ui'
+import {NPageHeader} from 'naive-ui'
+import UserInfo from '../Login/UserInfo.vue'
 </script>
 
 <template>
@@ -13,9 +14,7 @@ import {NPageHeader, NSpace, NButton} from 'naive-ui'
         </a>
       </template>
       <template #extra>
-        <n-space>
-          <n-button>登录</n-button>
-        </n-space>
+        <UserInfo />
       </template>
     </n-page-header>
   </div>

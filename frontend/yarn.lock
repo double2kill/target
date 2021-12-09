@@ -236,6 +236,11 @@
     "@typescript-eslint/types" "5.4.0"
     eslint-visitor-keys "^3.0.0"
 
+"@vicons/ionicons4@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@vicons/ionicons4/-/ionicons4-0.11.0.tgz#a60f5ead661d473f17103ad0051ce82ad771bbe6"
+  integrity sha512-2wgc2WZiQhR5AwNfiJcjxjNb910QBqeEYFXnZ0IJtfSgSUPH7lX6HEXegly3zqvLA0dmdUvyo2kI9lF/2PSbnQ==
+
 "@vitejs/plugin-vue@^1.9.3":
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue/-/plugin-vue-1.10.0.tgz#d015c12d905bb7f76274c2bb272c3662151bf3c0"

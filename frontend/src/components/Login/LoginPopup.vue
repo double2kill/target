@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { NModal, FormValidationError } from 'naive-ui'
-import { isItemPopupShow, itemFormRef, initialFormData } from './index'
-import ItemForm from './ItemForm.vue'
+import { NModal,FormValidationError } from 'naive-ui'
+import LoginForm from './LoginForm.vue'
+import { isLoginPopupShow, loginFormRef } from './index'
 
 const validFormData = (): Promise<boolean> => {
   return new Promise((resolve, reject) => {
-    itemFormRef.value.validate((errors: FormValidationError) => {
+    loginFormRef.value.validate((errors: FormValidationError) => {
       if (!errors) {
         resolve(true)
       } else {
@@ -17,22 +17,22 @@ const validFormData = (): Promise<boolean> => {
 
 const handleSubmit = async () => {
   await validFormData()
-  await itemFormRef.value.onSubmit()
+  await loginFormRef.value.onSubmit()
 }
-
 </script>
 
 <template>
   <n-modal
-    v-model:show="isItemPopupShow"
+    v-model:show="isLoginPopupShow"
     :mask-closable="false"
     :show-icon="false"
     preset="dialog"
-    title="添加目标"
+    title="登录"
     positive-text="确认"
     negative-text="算了"
+    data-test-id="登录弹窗"
     @positive-click="handleSubmit"
   >
-    <ItemForm :initial-form-data="initialFormData" />
+    <LoginForm />
   </n-modal>
 </template>

@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 describe('Admin targetList 页面', () => {
     beforeEach(() => {
         cy.visit(`${ORIGIN}:${PORT}/#/admin/targetList`)
+        cy.login()
     })
 
     it('1.表格增加数据成功，目标个数增加 2.编辑最后一条数据的目标内容成功 3.删除最后一条数据，目标个数和原来一样', () => {

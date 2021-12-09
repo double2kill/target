@@ -31,8 +31,7 @@ const menuOptions = [
 <template>
   <n-layout
     has-sider
-    position="absolute"
-    style="top: 65px"
+    style="height: 100%;"
   >
     <n-layout-sider
       bordered
