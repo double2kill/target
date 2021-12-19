@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import {NPageHeader} from 'naive-ui'
+import { NPageHeader } from 'naive-ui'
 import UserInfo from '../Login/UserInfo.vue'
+import { 用户已登录 } from '../Login/loginUser'
+import AddNewTarget from './AddNewTarget.vue'
 </script>
 
 <template>
@@ -8,10 +10,10 @@ import UserInfo from '../Login/UserInfo.vue'
     <n-page-header>
       <template #title>
         <a
-          href="https://anyway.fm/"
-          style="text-decoration: none; color: inherit;"
-        > Target
-        </a>
+          href="/"
+          style="text-decoration: none; color: inherit; margin-right: 25px;"
+        >Target</a>
+        <AddNewTarget v-if="用户已登录" />
       </template>
       <template #extra>
         <UserInfo />

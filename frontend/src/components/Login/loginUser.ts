@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { LoginUser, LoginFormData, User } from '../type'
 import axios from 'axios'
 import {USER_LIST} from '../../../../constants/api'
@@ -6,6 +6,8 @@ import {USER_LIST} from '../../../../constants/api'
 export const loginUser = reactive<LoginUser>({
   用户名: localStorage.getItem('用户名') || ''
 })
+
+export const 用户已登录 = computed(() => !!loginUser.用户名)
 
 export const handleLogin = async (formData: LoginFormData) => {
   const { 用户名 } = formData
