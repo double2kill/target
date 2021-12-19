@@ -1,4 +1,4 @@
 module.exports = {
     ORIGIN: 'http://localhost',
-    PORT: 4000
+    PORT: 8888
 }
