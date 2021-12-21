@@ -53,7 +53,6 @@ const handleSubmit = async () => {
     目标内容,
     计划完成时间,
   })
-  debugger
   await fetchTargetList()
   isModalShow.value = false
   表单内容.目标内容 = ''

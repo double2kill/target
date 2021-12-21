@@ -4,6 +4,7 @@ export type TargetFormData = {
     计划完成时间: string;
     用户名: string;
     完成时间?: string;
+    备注?: string;
 }
 
 export type TargetItem = Required<TargetFormData>;

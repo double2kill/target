@@ -14,7 +14,6 @@ export const targetData = ref<TargetItem[]>([])
 
 export const fetchTargetList = async () => {
   const {用户名} = loginUser
-  debugger
   if (!用户名) {
     targetData.value = []
     return

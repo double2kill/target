@@ -8,6 +8,7 @@ import Actions from './Actions.vue'
 import { TargetItem } from '../type'
 import dayjs from 'dayjs'
 import QuickFilter from './QuickFilter.vue'
+import InputBox from './InputBox.vue'
 
 const props = defineProps({
   isAdminMode: Boolean
@@ -43,6 +44,15 @@ let columns: TableColumns<TargetItem> = [
         : 完成时间 ? dayjs(+完成时间).format('YYYY-MM-DD HH:mm:ss') : ''
     }
   },
+  {
+    title: '备注',
+    key: '备注',
+    render (rowData) {
+      return h(InputBox, {
+        rowData
+      })
+    }
+  }
 ]
 
 if (props.isAdminMode) {

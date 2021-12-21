@@ -9,3 +9,7 @@ export const addTargetAPI = async ({目标内容, 计划完成时间}: {目标�
     计划完成时间
   })
 }
+
+export const addMarkToTargetAPI = async (id: number, 备注: string) => {
+  return axios.patch(`${TARGET_LIST}/${id}`, {备注})
+}
