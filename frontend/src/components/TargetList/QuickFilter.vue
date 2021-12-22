@@ -6,13 +6,6 @@ import { isAllFilter, setAllFilter, isTodayFilter, setTodayFilter, isWeekFilter,
 <template>
   <div class="quick-filter">
     <n-button
-      :type="isAllFilter ? 'primary' : 'default'"
-      class="filter-button"
-      @click="setAllFilter"
-    >
-      全部
-    </n-button>
-    <n-button
       :type="isTodayFilter ? 'primary' : 'default'"
       class="filter-button"
       @click="setTodayFilter"
@@ -25,6 +18,13 @@ import { isAllFilter, setAllFilter, isTodayFilter, setTodayFilter, isWeekFilter,
       @click="setWeekFilter"
     >
       本周目标
+    </n-button>
+    <n-button
+      :type="isAllFilter ? 'primary' : 'default'"
+      class="filter-button"
+      @click="setAllFilter"
+    >
+      全部
     </n-button>
   </div>
 </template>

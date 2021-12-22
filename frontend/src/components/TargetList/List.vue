@@ -27,6 +27,8 @@ let columns: TableColumns<TargetItem> = [
   {
     title: '计划完成时间',
     key: '计划完成时间',
+    defaultSortOrder: 'descend',
+    sorter: 'default',
     render (rowData) {
       const { 计划完成时间 } = rowData
       return props.isAdminMode
@@ -37,6 +39,11 @@ let columns: TableColumns<TargetItem> = [
   {
     title: '完成时间',
     key: '完成时间',
+    sorter (rowA:TargetItem, rowB:TargetItem) {
+      const a = rowA.完成时间 || 0
+      const b = rowB.完成时间 || 0
+      return a - b
+    },
     render (rowData) {
       const { 完成时间 } = rowData
       return props.isAdminMode

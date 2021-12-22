@@ -82,7 +82,7 @@ watch(loginUser, () => {
   fetchTargetList()
 })
 
-export const filterStartWith = ref<'day' | 'week' | ''>('')
+export const filterStartWith = ref<'day' | 'week' | ''>('day')
 export const isAllFilter = computed(() => filterStartWith.value === '')
 export const isTodayFilter = computed(() => filterStartWith.value === 'day')
 export const isWeekFilter = computed(() => filterStartWith.value === 'week')
