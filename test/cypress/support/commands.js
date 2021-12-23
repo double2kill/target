@@ -27,6 +27,7 @@ Cypress.Commands.add('login', (username = '刘晨') => {
     cy.get('[data-test-id="登录"]').click()
     cy.get('[data-test-id="登录弹窗"] [data-test-id="用户名"] input').focus().type(username)
     cy.get('.n-dialog__action button.n-button--primary-type').click()
+    cy.wait(200)
 })
 
 Cypress.Commands.add('logout', () => {

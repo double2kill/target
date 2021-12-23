@@ -31,9 +31,7 @@ let columns: TableColumns<TargetItem> = [
     sorter: 'default',
     render (rowData) {
       const { 计划完成时间 } = rowData
-      return props.isAdminMode
-        ? 计划完成时间
-        : 计划完成时间 ? dayjs(+计划完成时间).format('YYYY-MM-DD HH:mm:ss') : ''
+      return 计划完成时间 ? dayjs(+计划完成时间).format('YYYY-MM-DD HH:mm:ss') : ''
     }
   },
   {
@@ -46,9 +44,7 @@ let columns: TableColumns<TargetItem> = [
     },
     render (rowData) {
       const { 完成时间 } = rowData
-      return props.isAdminMode
-        ? 完成时间
-        : 完成时间 ? dayjs(+完成时间).format('YYYY-MM-DD HH:mm:ss') : ''
+      return 完成时间 ? dayjs(+完成时间).format('YYYY-MM-DD HH:mm:ss') : ''
     }
   },
   {

@@ -8,6 +8,7 @@ import { isAllFilter, setAllFilter, isTodayFilter, setTodayFilter, isWeekFilter,
     <n-button
       :type="isTodayFilter ? 'primary' : 'default'"
       class="filter-button"
+      data-test-id="今日目标"
       @click="setTodayFilter"
     >
       今日目标
@@ -15,6 +16,7 @@ import { isAllFilter, setAllFilter, isTodayFilter, setTodayFilter, isWeekFilter,
     <n-button
       :type="isWeekFilter ? 'primary' : 'default'"
       class="filter-button"
+      data-test-id="本周目标"
       @click="setWeekFilter"
     >
       本周目标
@@ -22,6 +24,7 @@ import { isAllFilter, setAllFilter, isTodayFilter, setTodayFilter, isWeekFilter,
     <n-button
       :type="isAllFilter ? 'primary' : 'default'"
       class="filter-button"
+      data-test-id="全部"
       @click="setAllFilter"
     >
       全部

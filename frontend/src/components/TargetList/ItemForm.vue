@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted, defineProps, PropType } from 'vue'
-import { NForm, NFormItem, NInput, FormRules } from 'naive-ui'
+import { NForm, NFormItem, NInput, FormRules, NInputNumber } from 'naive-ui'
 import { TargetFormData } from '../type'
 import { setItemFormRef, handleAddItem, initialFormData, handleEditItem } from './index'
 import { requiredValueValidator } from '../../utils/validator'
@@ -17,7 +17,7 @@ const formRef = ref(null)
 const formData = ref<TargetFormData>({
   目标内容: '',
   用户名: '',
-  计划完成时间: '',
+  计划完成时间: null,
 })
 
 const handleSubmit = (formData: TargetFormData) => {
@@ -94,7 +94,7 @@ const rules: FormRules = {
       path="计划完成时间"
       label="计划完成时间"
     >
-      <n-input
+      <n-input-number
         v-model:value="formData.计划完成时间"
         data-test-id="计划完成时间"
         placeholder="请输入"

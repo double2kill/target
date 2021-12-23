@@ -1,7 +1,7 @@
 export type TargetFormData = {
     id?: number;
     目标内容: string;
-    计划完成时间: string;
+    计划完成时间: number | null;
     用户名: string;
     完成时间?: number;
     备注?: string;

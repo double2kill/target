@@ -56,7 +56,7 @@ export const isItemPopupShow = ref(false)
 export const handleShowAddItemPopup = () => {
   initialFormData.value = {
     目标内容: '',
-    计划完成时间: '',
+    计划完成时间: null,
     用户名: '',
   }
   isItemPopupShow.value = true
@@ -74,7 +74,7 @@ export const setItemFormRef = (ref: any) => {
 
 export const initialFormData = ref<TargetFormData>({
   目标内容: '',
-  计划完成时间: '',
+  计划完成时间: null,
   用户名: '',
 })
 
