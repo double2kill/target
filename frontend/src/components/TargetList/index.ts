@@ -31,7 +31,10 @@ export const fetchTargetList = async () => {
 }
 
 export const handleAddItem = async (formData: TargetFormData) => {
-  await axios.post(TARGET_LIST, formData)
+  await axios.post(TARGET_LIST, {
+    ...formData,
+    添加时间: new Date().valueOf()
+  })
   await fetchTargetList()
 }
 
