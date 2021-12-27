@@ -7,7 +7,9 @@ export type TargetFormData = {
     备注?: string;
 }
 
-export type TargetItem = Required<TargetFormData>;
+export type TargetItem = Required<TargetFormData> & {
+    计划完成时间: number;
+};
 
 export type User = {
     id: number,

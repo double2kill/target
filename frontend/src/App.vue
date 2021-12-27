@@ -26,5 +26,6 @@ import NotLoginEmpty from './components/Login/NotLoginEmpty.vue'
   left: 0;
   bottom: 0;
   right: 0;
+  overflow: auto;
 }
 </style>

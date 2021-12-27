@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, PropType, nextTick } from 'vue'
-import { NButton, NIcon, NInput } from 'naive-ui'
+import { NButton, NIcon, NInput, NInputGroup } from 'naive-ui'
 import { MdAdd } from '@vicons/ionicons4'
 import { TargetItem } from '../type'
 import { addMarkToTargetAPI } from '../../api/target'
