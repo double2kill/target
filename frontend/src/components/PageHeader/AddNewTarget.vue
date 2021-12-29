@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import {
   NButton,
   NModal,
@@ -32,7 +32,7 @@ const hanldeShowModal = () => {
   isModalShow.value = true
 }
 
-const 表单内容 = reactive<表单类型>({ 目标内容: '', 计划完成时间: null })
+const 表单内容 = reactive<表单类型>({ 目标内容: '', 计划完成时间: dayjs().startOf('day').add(8, 'hour').valueOf() })
 
 const 处理日期变化 = (修改日期: number) => {
   // 清空状态
