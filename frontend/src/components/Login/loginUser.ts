@@ -1,7 +1,8 @@
-import { reactive, computed } from 'vue'
-import { LoginUser, LoginFormData, User } from '../type'
 import axios from 'axios'
+import { reactive, computed } from 'vue'
+
 import {USER_LIST} from '../../../../constants/api'
+import { LoginUser, LoginFormData, User } from '../type'
 
 export const loginUser = reactive<LoginUser>({
   用户名: localStorage.getItem('用户名') || ''

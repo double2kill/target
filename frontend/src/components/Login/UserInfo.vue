@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import {NSpace, NButton} from 'naive-ui'
+
 import LoginPopup from './LoginPopup.vue'
-import {showLoginPopup} from './index'
 import {loginUser, handleLogout} from './loginUser'
+
+import {showLoginPopup} from './index'
 </script>
 
 <template>

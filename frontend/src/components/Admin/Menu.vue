@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { h } from 'vue'
 import { NMenu, NLayout, NLayoutSider, MenuOption } from 'naive-ui'
+import { h } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const renderRouterLinkLabel = (option: MenuOption) => {

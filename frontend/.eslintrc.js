@@ -6,6 +6,8 @@ module.exports = {
   },
   'extends': [
     'plugin:vue/vue3-recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript'
   ],
   'parser': 'vue-eslint-parser',
   'parserOptions': {
@@ -41,5 +43,16 @@ module.exports = {
     'arrow-spacing': ['error', { 'before': true, 'after': true }],
     'func-call-spacing': ['error', 'never'],
     'no-trailing-spaces': 'error',
-  }
+    'import/order': [
+      'error',
+      {
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true
+        },
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+      },
+    ],
+  },
 }

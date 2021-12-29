@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import {onMounted, ref} from 'vue'
-import {User} from '../type'
 import axios from 'axios'
-import {USER_LIST} from '../../../../constants/api'
 import { NDataTable } from 'naive-ui'
+import {onMounted, ref} from 'vue'
+
+import {USER_LIST} from '../../../../constants/api'
+import {User} from '../type'
+
 const userData = ref<User[]>([])
 const fetchUserList = async () => {
   const result = await axios.get(USER_LIST)

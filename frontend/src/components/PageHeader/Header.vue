@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { NPageHeader } from 'naive-ui'
-import UserInfo from '../Login/UserInfo.vue'
+
 import { 用户已登录 } from '../Login/loginUser'
+import UserInfo from '../Login/UserInfo.vue'
+
 import AddNewTarget from './AddNewTarget.vue'
 </script>
 

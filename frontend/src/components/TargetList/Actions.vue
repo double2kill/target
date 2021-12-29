@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
 import { NPopconfirm, NButton } from 'naive-ui'
-import { handleDeleteItem, handleShowEditItemPopup, handleCompleteItem } from './index'
+import { PropType } from 'vue'
+
 import { TargetItem } from '../type'
+
+import { handleDeleteItem, handleShowEditItemPopup, handleCompleteItem } from './index'
+
 
 defineProps({
   rowData: {

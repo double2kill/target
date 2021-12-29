@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { NModal,FormValidationError } from 'naive-ui'
+
 import LoginForm from './LoginForm.vue'
+
 import { isLoginPopupShow, loginFormRef } from './index'
 
 const validFormData = (): Promise<boolean> => {

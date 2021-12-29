@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { NCard, NStatistic, NGrid, NGridItem, NDivider } from 'naive-ui'
 import { onMounted } from 'vue'
+
+import CompleteStatusFilter from './CompleteStatusFilter.vue'
 import Filter from './Filter.vue'
 import List from './List.vue'
+
 import { fetchStatisticList, 已完成的数据, listData, 完成率 } from './index'
-import CompleteStatusFilter from './CompleteStatusFilter.vue'
 
 onMounted(() => {
   fetchStatisticList()

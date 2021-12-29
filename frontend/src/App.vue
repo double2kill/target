@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import PageHeader from './components/PageHeader/Header.vue'
-import GlobalMessageContent from './components/GlobalMessageContent.vue'
 import { NMessageProvider } from 'naive-ui'
+
+import GlobalMessageContent from './components/GlobalMessageContent.vue'
 import { loginUser } from './components/Login/loginUser'
 import NotLoginEmpty from './components/Login/NotLoginEmpty.vue'
+import PageHeader from './components/PageHeader/Header.vue'
 </script>
 
 <template>

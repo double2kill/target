@@ -1,7 +1,8 @@
+import dayjs from 'dayjs'
 import { ref, computed, watch } from 'vue'
+
 import { getTargetAPI } from '../../api/target'
 import { loginUser } from '../../components/Login/loginUser'
-import dayjs from 'dayjs'
 import { TargetItem } from '../../components/type'
 
 export const statisticFilter = ref<'thisWeek' | 'lastWeek' | ''>('lastWeek')

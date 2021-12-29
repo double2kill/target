@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { NDataTable } from 'naive-ui'
-import { TargetItem } from '../../components/type'
-import { TableColumns } from 'naive-ui/es/data-table/src/interface'
 import dayjs from 'dayjs'
+import { NDataTable } from 'naive-ui'
+import { TableColumns } from 'naive-ui/es/data-table/src/interface'
+
+import { TargetItem } from '../../components/type'
+
 import { 过滤后的数据 } from './index'
 
 let columns: TableColumns<TargetItem> = [

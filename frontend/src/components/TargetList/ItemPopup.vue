@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { NModal, FormValidationError } from 'naive-ui'
-import { isItemPopupShow, itemFormRef, initialFormData } from './index'
+
 import ItemForm from './ItemForm.vue'
+
+import { isItemPopupShow, itemFormRef, initialFormData } from './index'
 
 const validFormData = (): Promise<boolean> => {
   return new Promise((resolve, reject) => {

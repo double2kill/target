@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, watch } from 'vue'
+import dayjs from 'dayjs'
 import {
   NButton,
   NModal,
@@ -16,9 +16,11 @@ import {
   dateZhCN,
   FormRules
 } from 'naive-ui'
+import { ref, reactive, watch } from 'vue'
+
 import { addTargetAPI } from '../../api/target'
 import { fetchTargetList } from '../TargetList/index'
-import dayjs from 'dayjs'
+
 
 type 表单类型 = {
   目标内容: string

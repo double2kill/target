@@ -1,9 +1,12 @@
 <script lang="ts" setup>
-import { ref, onMounted, defineProps, PropType } from 'vue'
 import { NForm, NFormItem, NInput, FormRules, NInputNumber } from 'naive-ui'
-import { TargetFormData } from '../type'
-import { setItemFormRef, handleAddItem, initialFormData, handleEditItem } from './index'
+import { ref, onMounted, defineProps, PropType } from 'vue'
+
 import { requiredValueValidator } from '../../utils/validator'
+import { TargetFormData } from '../type'
+
+import { setItemFormRef, handleAddItem, initialFormData, handleEditItem } from './index'
+
 
 defineProps({
   initialFormData: {

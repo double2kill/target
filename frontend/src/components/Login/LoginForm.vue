@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
 import { NForm, NFormItem, NInput, FormRules } from 'naive-ui'
+import { ref, onMounted } from 'vue'
+
 import { requiredValueValidator } from '../../utils/validator'
-import { setLoginFormRef } from './index'
 import { handleLogin } from '../Login/loginUser'
 import { LoginFormData } from '../type'
+
+import { setLoginFormRef } from './index'
 
 const formRef = ref(null)
 

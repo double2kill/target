@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { IosLogIn } from '@vicons/ionicons4'
 import { NEmpty, NIcon, NButton } from 'naive-ui'
+
 import { showLoginPopup } from './index'
 </script>
 
