@@ -106,6 +106,7 @@ const handleSubmit = async () => {
   <n-button
     type="primary"
     @click="hanldeShowModal"
+    data-test-id="添加目标"
   >
     添加
   </n-button>
@@ -124,7 +125,9 @@ const handleSubmit = async () => {
       :show-label="false"
       style="padding-top: 25px"
     >
-      <n-form-item path="目标内容">
+      <n-form-item 
+      data-test-id="填写目标"
+      path="目标内容">
         <n-input
           v-model:value="表单内容.目标内容"
           placeholder="填写目标"
@@ -139,6 +142,7 @@ const handleSubmit = async () => {
           <n-date-picker
             v-model:value="表单内容.计划完成时间"
             placeholder="选择计划完成时间"
+            data-test-id="选择计划完成时间"
             type="date"
             style="width: 50%"
             clearable
@@ -151,6 +155,7 @@ const handleSubmit = async () => {
             v-model:value="表单内容.计划完成时间"
             format="HH:mm"
             :disabled="!表单内容.计划完成时间"
+            data-test-id="计划完成时间"
             :minutes="15"
           />
         </n-config-provider>
