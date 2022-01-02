@@ -125,10 +125,9 @@ const handleSubmit = async () => {
       :show-label="false"
       style="padding-top: 25px"
     >
-      <n-form-item 
-      data-test-id="填写目标"
-      path="目标内容">
+      <n-form-item path="目标内容">
         <n-input
+          data-test-id="填写目标"
           v-model:value="表单内容.目标内容"
           placeholder="填写目标"
         />
@@ -166,6 +165,7 @@ const handleSubmit = async () => {
             <n-button
               type="primary"
               @click="handleSubmit"
+              data-test-id="添加按钮"
             >
               添加
             </n-button>
