@@ -26,7 +26,7 @@ onMounted(() => {
       >
         <n-card
           embedded
-          title="本周统计结果"
+          title="统计结果"
         >
           <n-grid
             x-gap="12"
