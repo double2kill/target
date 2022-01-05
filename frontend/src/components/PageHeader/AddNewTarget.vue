@@ -97,7 +97,7 @@ const handleSubmit = async () => {
   await fetchTargetList()
   isModalShow.value = false
   表单内容.目标内容 = ''
-  表单内容.计划完成时间 = null
+  表单内容.计划完成时间 = dayjs().startOf('day').add(8, 'hour').valueOf()
 }
 
 </script>
@@ -105,8 +105,8 @@ const handleSubmit = async () => {
 <template>
   <n-button
     type="primary"
-    @click="hanldeShowModal"
     data-test-id="添加目标"
+    @click="hanldeShowModal"
   >
     添加
   </n-button>
@@ -127,8 +127,8 @@ const handleSubmit = async () => {
     >
       <n-form-item path="目标内容">
         <n-input
-          data-test-id="填写目标"
           v-model:value="表单内容.目标内容"
+          data-test-id="填写目标"
           placeholder="填写目标"
         />
       </n-form-item>
@@ -164,8 +164,8 @@ const handleSubmit = async () => {
           <div style="display: flex; justify-content: flex-end;">
             <n-button
               type="primary"
-              @click="handleSubmit"
               data-test-id="添加按钮"
+              @click="handleSubmit"
             >
               添加
             </n-button>
