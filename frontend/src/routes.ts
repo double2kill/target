@@ -7,6 +7,7 @@ import StatisticPage from './pages/Statistic/StatisticPage.vue'
 export const routes = [
   {
     path: '/',
+    name: '首页',
     component: TargetList,
     props: {
       isAdminMode: false
@@ -15,6 +16,7 @@ export const routes = [
   {
     path: '/statistic',
     component: StatisticPage,
+    name: '统计',
   },
   {
     path: '/admin',
@@ -23,13 +25,15 @@ export const routes = [
       {
         path: 'targetList',
         component: TargetList,
+        name: '目标列表',
         props: {
           isAdminMode: true
         }
       },
       {
         path: 'users',
-        component: Users
+        component: Users,
+        name: '用户',
       },
       {
         path: ':pathMatch(.*)*',

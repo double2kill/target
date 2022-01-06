@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { NMenu, NLayout, NLayoutSider, MenuOption } from 'naive-ui'
-import { h } from 'vue'
-import { RouterLink } from 'vue-router'
+import { watch, h, ref } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
 
 const renderRouterLinkLabel = (option: MenuOption) => {
   const {label, key} = option
@@ -9,7 +9,7 @@ const renderRouterLinkLabel = (option: MenuOption) => {
     RouterLink,
     {
       to: {
-        path: `/admin/${key}`
+        name: String(key)
       }
     },
     { default: () => label }
@@ -19,13 +19,17 @@ const renderRouterLinkLabel = (option: MenuOption) => {
 const menuOptions = [
   {
     label: '目标列表',
-    key: 'targetList',
+    key: '目标列表',
   },
   {
     label: '用户',
-    key: 'users',
+    key: '用户',
   },
 ]
+
+const route = useRoute()
+const activeKey = ref(String(route.name))
+
 </script>
 
 <template>
@@ -41,6 +45,7 @@ const menuOptions = [
       show-trigger
     >
       <n-menu
+        v-model:value="activeKey"
         :render-label="renderRouterLinkLabel"
         :options="menuOptions"
       />
