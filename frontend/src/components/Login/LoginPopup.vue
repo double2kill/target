@@ -20,6 +20,7 @@ const validFormData = (): Promise<boolean> => {
 const handleSubmit = async () => {
   await validFormData()
   await loginFormRef.value.onSubmit()
+  isLoginPopupShow.value = false
 }
 </script>
 
@@ -35,6 +36,6 @@ const handleSubmit = async () => {
     data-test-id="登录弹窗"
     @positive-click="handleSubmit"
   >
-    <LoginForm />
+    <LoginForm :on-enter="handleSubmit" />
   </n-modal>
 </template>
