@@ -29,4 +29,11 @@ import PageHeader from './components/PageHeader/Header.vue'
   right: 0;
   overflow: auto;
 }
+
+@media (max-width: 800px){
+  .target-content {
+    bottom: 60px;
+  }
+}
+
 </style>
