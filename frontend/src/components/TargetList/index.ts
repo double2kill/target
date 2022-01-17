@@ -105,3 +105,24 @@ export const setWeekFilter = () => {
 watch(filterStartWith, () => {
   fetchTargetList()
 })
+
+export const 表格Ref = ref<any>(null)
+export const 设置表格Ref = (ref: any) => {
+  表格Ref.value = ref
+}
+
+type 过滤类型枚举 = '未完成'|'已完成'|'全部'
+
+export const 表格过滤类型 = ref<过滤类型枚举>('全部')
+
+export const 设置表格过滤 = (过滤类型: 过滤类型枚举) => {
+  const 过滤类型Map = {
+    '未完成': ['未完成'],
+    '已完成': ['已完成'],
+    '全部': ['已完成', '未完成']
+  }
+  表格Ref.value.filter({
+    完成时间: 过滤类型Map[过滤类型]
+  })
+  表格过滤类型.value = 过滤类型
+}

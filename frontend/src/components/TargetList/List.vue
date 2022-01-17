@@ -2,7 +2,7 @@
 import dayjs from 'dayjs'
 import { NDataTable, NButton } from 'naive-ui'
 import { TableColumns } from 'naive-ui/es/data-table/src/interface'
-import { onMounted, h } from 'vue'
+import { onMounted, h, ref } from 'vue'
 
 import { TargetItem } from '../type'
 
@@ -11,18 +11,18 @@ import InputBox from './InputBox.vue'
 import ItemPopup from './ItemPopup.vue'
 import QuickFilter from './QuickFilter.vue'
 
-import { targetData, setIsAdminMode, fetchTargetList, handleShowAddItemPopup } from './index'
-
-
-
+import { targetData, setIsAdminMode, fetchTargetList, handleShowAddItemPopup, 设置表格Ref } from './index'
 
 const props = defineProps({
   isAdminMode: Boolean
 })
 
+const 表格Ref = ref<null>(null)
+
 onMounted(() => {
   setIsAdminMode(props.isAdminMode)
   fetchTargetList()
+  设置表格Ref(表格Ref.value)
 })
 
 let columns: TableColumns<TargetItem> = [
@@ -51,6 +51,16 @@ let columns: TableColumns<TargetItem> = [
     render (rowData) {
       const { 完成时间 } = rowData
       return 完成时间 ? dayjs(+完成时间).format('YYYY-MM-DD HH:mm:ss') : ''
+    },
+    defaultFilterOptionValues: ['已完成', '未完成'],
+    filter (value, row) {
+      const 完成时间 = row.完成时间 || 0
+      if (value === '未完成') {
+        return 完成时间 ===0
+      } else if (value === '已完成') {
+        return 完成时间!==0
+      }
+      return false
     }
   },
   {
@@ -104,6 +114,7 @@ columns.push({
     <ItemPopup />
   </div>
   <n-data-table
+    ref="表格Ref"
     data-test-id="表格"
     :row-key="(item) => item.id"
     :columns="columns"
