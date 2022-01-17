@@ -34,7 +34,16 @@ const hanldeShowModal = () => {
   isModalShow.value = true
 }
 
-const 表单内容 = reactive<表单类型>({ 目标内容: '', 计划完成时间: dayjs().startOf('day').add(8, 'hour').valueOf() })
+const 十五分钟 = 15 * 60 * 1000
+
+const 生成默认计划完成时间 = () => {
+  const 当前时间戳 = dayjs().valueOf()
+  const 当前整点时间戳 = dayjs().startOf('hour').valueOf()
+  const 下个整数时刻的时间差 = Math.ceil((当前时间戳 - 当前整点时间戳) / 十五分钟)* 十五分钟
+  return 当前整点时间戳 + 下个整数时刻的时间差
+}
+
+const 表单内容 = reactive<表单类型>({ 目标内容: '', 计划完成时间: 生成默认计划完成时间() })
 
 const 处理日期变化 = (修改日期: number) => {
   // 清空状态
@@ -67,8 +76,16 @@ const rules: FormRules = {
   计划完成时间: {
     type: 'number',
     required: true,
-    message: '请选择计划完成时间',
-    trigger: 'blur'
+    trigger: 'blur',
+    validator (rule, value) {
+      if (!value) {
+        return new Error('请选择计划完成时间')
+      }
+      if (value < new Date().valueOf()) {
+        return new Error('完成时间不能小于当前时间')
+      }
+      return true
+    }
   },
 }
 
@@ -97,7 +114,7 @@ const handleSubmit = async () => {
   await fetchTargetList()
   isModalShow.value = false
   表单内容.目标内容 = ''
-  表单内容.计划完成时间 = dayjs().startOf('day').add(8, 'hour').valueOf()
+  表单内容.计划完成时间 = 生成默认计划完成时间()
 }
 
 </script>
