@@ -6,7 +6,7 @@ import CompleteStatusFilter from './CompleteStatusFilter.vue'
 import Filter from './Filter.vue'
 import List from './List.vue'
 
-import { fetchStatisticList, 已完成的数据, listData, 完成率 } from './index'
+import { fetchStatisticList, 已完成的数据, 已及时完成的数据, listData, 及时完成率, 完成率 } from './index'
 
 onMounted(() => {
   fetchStatisticList()
@@ -33,7 +33,7 @@ onMounted(() => {
             cols="2"
           >
             <n-grid-item>
-              <n-statistic label="目标完成情况">
+              <n-statistic label="完成情况">
                 {{ 已完成的数据.length }}
                 <template #suffix>
                   / {{ listData.length }}
@@ -43,6 +43,19 @@ onMounted(() => {
             <n-grid-item>
               <n-statistic label="完成率">
                 {{ 完成率 }} %
+              </n-statistic>
+            </n-grid-item>
+            <n-grid-item>
+              <n-statistic label="及时完成情况">
+                {{ 已及时完成的数据.length }}
+                <template #suffix>
+                  / {{ listData.length }}
+                </template>
+              </n-statistic>
+            </n-grid-item>
+            <n-grid-item>
+              <n-statistic label="及时完成率">
+                {{ 及时完成率 }} %
               </n-statistic>
             </n-grid-item>
           </n-grid>

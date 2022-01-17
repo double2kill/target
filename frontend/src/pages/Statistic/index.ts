@@ -43,12 +43,24 @@ watch(statisticFilter, () => {
   fetchStatisticList()
 })
 
-export const completeStatusFilter = ref('未完成')
-export const setCompleteStatusFilter = (value: string) => {
-  completeStatusFilter.value = value
+export const 完成状态的选择 = ref('未完成')
+export const 设置完成状态的选择 = (value: string) => {
+  完成状态的选择.value = value
 }
 
 export const 未完成的数据 = computed(() => {
+  return listData.value.filter(item => {
+    return !item.完成时间
+  })
+})
+
+export const 已完成的数据 = computed(() => {
+  return listData.value.filter(item => {
+    return !!item.完成时间
+  })
+})
+
+export const 未及时完成的数据 = computed(() => {
   return listData.value.filter(item => {
     if (!item.完成时间) {
       return true
@@ -57,7 +69,7 @@ export const 未完成的数据 = computed(() => {
   })
 })
 
-export const 已完成的数据 = computed(() => {
+export const 已及时完成的数据 = computed(() => {
   return listData.value.filter(item => {
     if (!item.完成时间) {
       return false
@@ -73,12 +85,25 @@ export const 完成率 = computed(() => {
   return (已完成的数据.value.length / listData.value.length * 100).toFixed(0)
 })
 
+export const 及时完成率 = computed(() => {
+  if (listData.value.length === 0) {
+    return 0
+  }
+  return (已及时完成的数据.value.length / listData.value.length * 100).toFixed(0)
+})
+
 export const 过滤后的数据 = computed(() => {
-  if (completeStatusFilter.value === '全部') {
+  if (完成状态的选择.value === '全部') {
     return listData.value
   }
-  if (completeStatusFilter.value === '未完成') {
+  if (完成状态的选择.value === '未完成') {
     return 未完成的数据.value
   }
-  return 已完成的数据.value
+  if (完成状态的选择.value === '已完成') {
+    return 已完成的数据.value
+  }
+  if (完成状态的选择.value === '未及时完成') {
+    return 未及时完成的数据.value
+  }
+  return 已及时完成的数据.value
 })

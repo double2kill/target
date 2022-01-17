@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { NButton } from 'naive-ui'
 
-import { completeStatusFilter, setCompleteStatusFilter } from './index'
-const options = ['未完成', '完成', '全部']
+import { 完成状态的选择, 设置完成状态的选择 } from './index'
+const options = ['未完成', '已完成', '未及时完成', '及时完成', '全部']
 </script>
 <template>
   <div class="filter">
     <n-button
       v-for="option in options"
       :key="option"
-      :type="completeStatusFilter === option ? 'primary' : 'default'"
+      :type="完成状态的选择 === option ? 'primary' : 'default'"
       class="filter-button"
       data-test-id="上周统计"
-      @click="setCompleteStatusFilter(option)"
+      @click="设置完成状态的选择(option)"
     >
       {{ option }}
     </n-button>
