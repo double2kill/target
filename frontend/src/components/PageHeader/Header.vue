@@ -29,6 +29,10 @@ const menuOptions = [
     key: '首页',
   },
   {
+    label: '手机端',
+    key: '手机端',
+  },
+  {
     label: '统计',
     key: '统计',
   },

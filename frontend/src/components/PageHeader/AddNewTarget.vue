@@ -19,6 +19,7 @@ import {
 import { ref, reactive, watch } from 'vue'
 
 import { addTargetAPI } from '../../api/target'
+import { fetchData as mobileFetchData } from '../../pages/Mobile/logic'
 import { fetchTargetList } from '../TargetList/index'
 
 
@@ -112,6 +113,7 @@ const handleSubmit = async () => {
     计划完成时间,
   })
   await fetchTargetList()
+  await mobileFetchData()
   isModalShow.value = false
   表单内容.目标内容 = ''
   表单内容.计划完成时间 = 生成默认计划完成时间()

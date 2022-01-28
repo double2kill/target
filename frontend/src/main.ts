@@ -1,4 +1,6 @@
 import axios from 'axios'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { createApp } from 'vue'
 import {createRouter, createWebHashHistory } from 'vue-router'
 
@@ -24,3 +26,5 @@ axios.interceptors.response.use(function (response) {
 })
 
 app.mount('#app')
+
+dayjs.extend(relativeTime)
