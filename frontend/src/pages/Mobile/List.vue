@@ -48,14 +48,14 @@ onMounted(() => {
           <span class="action">
             <Button
               v-if="目标已超时(item)"
-              size="mini"
+              size="small"
               @click="handleCancelItem(item)"
             >
               取消
             </Button>
             <Button
               type="primary"
-              size="mini"
+              size="small"
               @click="handleCompleteItem(item)"
             >
               完成
