@@ -18,8 +18,19 @@ export const fetchData = async () => {
     _sort: '计划完成时间',
     _order: 'asc'
   }
-  const result = await axios.get<TargetItem[]>(TARGET_LIST, {params})
-  listData.value = result.data.filter(item => !item.完成时间)
+
+  const 现在时间 = new Date().valueOf()
+
+  let result = await axios.get<TargetItem[]>(TARGET_LIST, {params})
+
+  listData.value = result.data
+    .filter(item => !item.完成时间)
+    .sort((a,b) => {
+      if (a.计划完成时间 > 现在时间 && b.计划完成时间 > 现在时间) {
+        return a.计划完成时间 - b.计划完成时间
+      }
+      return b.计划完成时间 - a.计划完成时间
+    })
 }
 
 export const handleCompleteItem = async (rowData: TargetItem) => {
