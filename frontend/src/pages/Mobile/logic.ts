@@ -1,9 +1,11 @@
 import axios from 'axios'
+import dayjs from 'dayjs'
 import { ref } from 'vue'
 
 import { TARGET_LIST } from '../../../../constants/api'
 import { loginUser } from '../../components/Login/loginUser'
 import { TargetItem } from '../../components/type'
+
 
 export const listData = ref<TargetItem[]>([])
 
@@ -26,7 +28,7 @@ export const fetchData = async () => {
   listData.value = result.data
     .filter(item => !item.完成时间)
     .sort((a,b) => {
-      if (a.计划完成时间 > 现在时间 && b.计划完成时间 > 现在时间) {
+      if (!目标已超时(a) && !目标已超时(b)) {
         return a.计划完成时间 - b.计划完成时间
       }
       return b.计划完成时间 - a.计划完成时间
@@ -39,3 +41,6 @@ export const handleCompleteItem = async (rowData: TargetItem) => {
   })
   await fetchData()
 }
+
+export const 目标是今日目标 = (item: TargetItem) => dayjs(item.计划完成时间).isSame(dayjs(), 'day')
+export const 目标已超时 = (item: TargetItem) => item.计划完成时间 < new Date().valueOf()

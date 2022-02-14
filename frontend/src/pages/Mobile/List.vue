@@ -5,7 +5,7 @@ import { onMounted } from 'vue'
 
 import FormattedDate from '../../components/Date/FormattedDate.vue'
 
-import { listData, fetchData, handleCompleteItem } from './logic'
+import { listData, fetchData, handleCompleteItem, 目标是今日目标, 目标已超时 } from './logic'
 
 onMounted(() => {
   fetchData()
@@ -24,14 +24,14 @@ onMounted(() => {
           :value="item.计划完成时间"
         />
         <Tag
-          v-if="dayjs(item.计划完成时间).isSame(dayjs(), 'day')"
+          v-if="目标是今日目标(item)"
           type="warning"
           class="tag-item"
         >
           今日目标
         </Tag>
         <Tag
-          v-if="item.计划完成时间 < new Date().valueOf()"
+          v-if="目标已超时(item)"
           type="danger"
           class="tag-item"
         >
