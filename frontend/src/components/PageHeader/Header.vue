@@ -9,7 +9,6 @@ import UserInfo from '../Login/UserInfo.vue'
 
 import AddNewTarget from './AddNewTarget.vue'
 
-
 const activeKey = ref('首页')
 
 const renderRouterLinkLabel = (option: MenuOption) => {

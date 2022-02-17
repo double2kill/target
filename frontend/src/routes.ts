@@ -10,7 +10,7 @@ export const routes = [
   {
     path: '/',
     name: '首页',
-    component: () => {
+    component: async () => {
       if (是手机设备()) {
         return MobileList
       }
