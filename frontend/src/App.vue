@@ -6,12 +6,7 @@ import GlobalMessageContent from './components/GlobalMessageContent.vue'
 import { loginUser } from './components/Login/loginUser'
 import NotLoginEmpty from './components/Login/NotLoginEmpty.vue'
 import PageHeader from './components/PageHeader/Header.vue'
-
-const themeVars = {
-  buttonPrimaryBorderColor: '#18a058',
-  buttonPrimaryBackgroundColor: '#18a058',
-}
-
+import {themeVars} from './pages/Mobile/theme'
 
 </script>
 

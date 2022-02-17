@@ -62,6 +62,11 @@ export const handleCompleteItem = async (rowData: TargetItem) => {
   await fetchData()
 }
 
+export const handleEditItem = async (rowData: TargetItem) => {
+  await axios.put(`${TARGET_LIST}/${rowData.id}`, rowData)
+  await fetchData()
+}
+
 export const 目标是今日目标 = (item: TargetItem) => dayjs(item.计划完成时间).isSame(dayjs(), 'day')
 export const 目标已超时 = (item: TargetItem) => item.计划完成时间 < new Date().valueOf()
 export const 目标是本周目标 = (item: TargetItem) => dayjs(item.计划完成时间).isSame(dayjs(), 'week')

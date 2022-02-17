@@ -1,15 +1,23 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
-import { Cell, CellGroup, Tag, Button } from 'vant'
+import { Cell, CellGroup, Button } from 'vant'
 import { onMounted } from 'vue'
 
 import FormattedDate from '../../components/Date/FormattedDate.vue'
+import {TargetItem} from '../../components/type'
+
 
 import { listData, fetchData, handleCompleteItem, handleCancelItem, 目标是今日目标, 目标已超时, 目标是本周目标 } from './logic'
+import {操作显示详情弹出层} from './Popup/logic'
+import PopupList from './Popup/PopupList.vue'
+import TagList from './TagList/TagList.vue'
 
 onMounted(() => {
   fetchData()
 })
+
+const 操作点击列表单元格 = (item: TargetItem) => {
+  操作显示详情弹出层(item)
+}
 
 </script>
 <template>
@@ -19,44 +27,30 @@ onMounted(() => {
         v-for="item in listData"
         :key="item.id"
         :title="item.目标内容"
+        clickable
+        @click="操作点击列表单元格(item)"
       >
         <template #label>
           <FormattedDate
             :value="item.计划完成时间"
           />
-          <Tag
-            v-if="目标是今日目标(item)"
-            type="primary"
-            class="tag-item"
-          >
-            今日目标
-          </Tag>
-          <Tag
-            v-if="目标是本周目标(item)"
-            type="warning"
-            class="tag-item"
-          >
-            本周目标
-          </Tag>
-          <Tag
-            v-if="目标已超时(item)"
-            type="danger"
-            class="tag-item"
-          >
-            已超时
-          </Tag>
+          <TagList
+            :value="item"
+          />
           <span class="action">
             <Button
               v-if="目标已超时(item)"
+              plain
+              type="primary"
               size="small"
-              @click="handleCancelItem(item)"
+              @click.stop="handleCancelItem(item)"
             >
               取消
             </Button>
             <Button
               type="primary"
               size="small"
-              @click="handleCompleteItem(item)"
+              @click.stop="handleCompleteItem(item)"
             >
               完成
             </Button>
@@ -64,6 +58,7 @@ onMounted(() => {
         </template>
       </Cell>
     </CellGroup>
+    <PopupList />
   </div>
 </template>
 
@@ -71,7 +66,7 @@ onMounted(() => {
 .action {
   float: right;
 }
-.tag-item {
-  margin-left: 10px;
+.action button+button {
+  margin-left: 5px;
 }
 </style>

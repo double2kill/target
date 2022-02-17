@@ -1,17 +1,22 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import {defineProps} from 'vue'
+
 const props = defineProps({
   value: {
     type: Number,
-    required: true
+    required: true,
+  },
+  空值文本: {
+    type:  String,
+    default: '无效时间'
   }
 })
 
 function getDateText () {
-  const { value } = props
+  const { value, 空值文本 } = props
   if (!value) {
-    return '无效时间'
+    return 空值文本
   }
   const 现在时间 = dayjs()
   if (dayjs(value).isSame(现在时间, 'day')) {
