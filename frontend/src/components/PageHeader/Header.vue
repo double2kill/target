@@ -3,10 +3,12 @@ import { NPageHeader, NMenu, MenuOption } from 'naive-ui'
 import { ref, h, onMounted, watch } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 
+import {是手机设备} from '../../utils/navigator'
 import { 用户已登录 } from '../Login/loginUser'
 import UserInfo from '../Login/UserInfo.vue'
 
 import AddNewTarget from './AddNewTarget.vue'
+
 
 const activeKey = ref('首页')
 
@@ -23,15 +25,22 @@ const renderRouterLinkLabel = (option: MenuOption) => {
   )
 }
 
+const 第二个菜单 = 是手机设备()
+  ? {
+    label: '表格',
+    key: '表格'
+  }
+  : {
+    label: '手机端',
+    key: '手机端',
+  }
+
 const menuOptions = [
   {
     label: '首页',
     key: '首页',
   },
-  {
-    label: '手机端',
-    key: '手机端',
-  },
+  第二个菜单,
   {
     label: '统计',
     key: '统计',

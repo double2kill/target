@@ -4,11 +4,25 @@ import NotFoundPage from './components/NotFoundPage.vue'
 import TargetList from './components/TargetList/List.vue'
 import MobileList from './pages/Mobile/List.vue'
 import StatisticPage from './pages/Statistic/StatisticPage.vue'
+import {是手机设备} from './utils/navigator'
 
 export const routes = [
   {
     path: '/',
     name: '首页',
+    component: () => {
+      if (是手机设备()) {
+        return MobileList
+      }
+      return TargetList
+    },
+    props: {
+      isAdminMode: false
+    }
+  },
+  {
+    path: '/targetList',
+    name: '表格',
     component: TargetList,
     props: {
       isAdminMode: false
