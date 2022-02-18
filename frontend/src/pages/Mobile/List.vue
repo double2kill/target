@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import { Cell, CellGroup, Button } from 'vant'
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 import FormattedDate from '../../components/Date/FormattedDate.vue'
 import {TargetItem} from '../../components/type'
 
 
-import { listData, fetchData, handleCompleteItem, handleCancelItem, 目标是今日目标, 目标已超时, 目标是本周目标 } from './logic'
-import {操作显示详情弹出层} from './Popup/logic'
+import { listData, fetchData, handleCompleteItem, handleCancelItem, 目标已超时 } from './logic'
+import {操作显示详情弹出层, setRouter} from './Popup/logic'
 import PopupList from './Popup/PopupList.vue'
 import TagList from './TagList/TagList.vue'
 
+const router = useRouter()
+
 onMounted(() => {
   fetchData()
+  setRouter(router)
 })
 
 const 操作点击列表单元格 = (item: TargetItem) => {

@@ -34,6 +34,11 @@ export const routes = [
     component: MobileList,
   },
   {
+    path: '/mobile/detail',
+    name: '手机端详情',
+    component: MobileList,
+  },
+  {
     path: '/statistic',
     component: StatisticPage,
     name: '统计',

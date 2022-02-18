@@ -3,6 +3,15 @@ import {ref} from 'vue'
 import {TargetItem} from '../../../components/type'
 import {handleEditItem} from '../logic'
 
+export const router = ref<any>(null)
+
+export const setRouter = (value: any) => {
+  router.value = value
+  if (value.currentRoute.value.name === '手机端详情') {
+    router.value.replace({name: '首页'})
+  }
+}
+
 export const 是否显示详情弹出层 = ref(false)
 
 export const 操作显示详情弹出层 =(item: TargetItem) => {
@@ -10,10 +19,13 @@ export const 操作显示详情弹出层 =(item: TargetItem) => {
     ...item
   }
   是否显示详情弹出层.value = true
+  router.value.push({name: '手机端详情'})
+  router.value.go(1)
 }
 
 export const 操作关闭详情弹出层 = () => {
   是否显示详情弹出层.value = false
+  history.back()
 }
 
 export const 详情表单数据 = ref<TargetItem>({
