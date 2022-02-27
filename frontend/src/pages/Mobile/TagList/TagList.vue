@@ -16,6 +16,10 @@ const props = defineProps({
 const 至今差别天数 = computed(() => {
   const 计划完成时间Dayjs= dayjs(props.value.计划完成时间)
   const 当前Dayjs = dayjs()
+  const 小时 = 计划完成时间Dayjs.diff(当前Dayjs, 'hour')
+  if (小时 < 24) {
+    return `剩${小时}小时`
+  }
   const 天数 = 计划完成时间Dayjs.diff(当前Dayjs, 'day')
   if (天数 < 7) {
     return `${天数}天后`
