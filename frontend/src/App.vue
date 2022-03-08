@@ -11,16 +11,16 @@ import {themeVars} from './pages/Mobile/theme'
 </script>
 
 <template>
-  <PageHeader />
-  <ConfigProvider :theme-vars="themeVars">
-    <div class="target-content">
-      <router-view
-        v-if="loginUser.用户名"
-      />
-      <NotLoginEmpty v-else />
-    </div>
-  </ConfigProvider>
   <n-message-provider>
+    <PageHeader />
+    <ConfigProvider :theme-vars="themeVars">
+      <div class="target-content">
+        <router-view
+          v-if="loginUser.用户名"
+        />
+        <NotLoginEmpty v-else />
+      </div>
+    </ConfigProvider>
     <GlobalMessageContent />
   </n-message-provider>
 </template>

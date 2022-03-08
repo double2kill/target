@@ -14,12 +14,13 @@ import {
   NConfigProvider,
   zhCN,
   dateZhCN,
-  FormRules
+  FormRules,
 } from 'naive-ui'
 import { ref, reactive, watch } from 'vue'
 
 import { addTargetAPI } from '../../api/target'
 import { fetchData as mobileFetchData } from '../../pages/Mobile/logic'
+import { debounce } from '../../utils/functions'
 import { fetchTargetList } from '../TargetList/index'
 
 
@@ -102,22 +103,32 @@ const 验证表单数据 = (): Promise<boolean> => {
   })
 }
 
-const handleSubmit = async () => {
+const 提交中 = ref(false)
+
+const 处理提交点击 = async () => {
   await 验证表单数据()
   const {目标内容, 计划完成时间} = 表单内容
   if (!计划完成时间) {
     return
   }
-  await addTargetAPI({
-    目标内容,
-    计划完成时间,
-  })
-  await fetchTargetList()
-  await mobileFetchData()
-  isModalShow.value = false
-  表单内容.目标内容 = ''
-  表单内容.计划完成时间 = 生成默认计划完成时间()
+  提交中.value = true
+  try {
+    await addTargetAPI({
+      目标内容,
+      计划完成时间,
+    })
+    isModalShow.value = false
+    表单内容.目标内容 = ''
+    表单内容.计划完成时间 = 生成默认计划完成时间()
+    await fetchTargetList()
+    await mobileFetchData()
+  } catch (error) {
+    // 什么都不做
+  }
+  提交中.value = false
 }
+
+const 防抖处理提交点击 = debounce(处理提交点击, 500)
 
 </script>
 
@@ -184,7 +195,8 @@ const handleSubmit = async () => {
             <n-button
               type="primary"
               data-test-id="添加按钮"
-              @click="handleSubmit"
+              :disabled="提交中"
+              @click="防抖处理提交点击"
             >
               添加
             </n-button>
