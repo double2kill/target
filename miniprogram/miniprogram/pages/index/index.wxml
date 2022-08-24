@@ -1,0 +1,36 @@
+<!-- index.wxml -->
+<view>
+  <block>
+    <van-button bind:click="handleOpenPopup">
+      添加
+    </van-button>
+    <van-popup show="{{ show }}" bind:close="handleClosePopup" position="right" custom-style="width: 100%; height: 100%; background: white;" closeable>
+      <block class="blank-area">
+        111
+      </block>
+      <van-cell-group>
+        <van-field value="{{ userName }}" placeholder="请输入用户名" border="{{ false }}" label="用户名" />
+      </van-cell-group>
+    </van-popup>
+    <block wx:for="{{listData}}" wx:key="index" wx:for-item="item">
+      <van-cell-group>
+        <van-cell title="{{item.title}}" use-label-slot>
+          <view slot="label">
+            <text>{{item.completeDate}}</text>
+            <van-tag class="tag-item" type="{{item.tagConfig.tagType}}" plain="{{item.tagConfig.isPlain}}">
+              {{item.tagConfig.text}}
+            </van-tag>
+            <view class="action">
+              <van-button size="small" data-id="{{item.id}}" bind:click="handleClickCancel" wx:if="{{item.shouldShowCancelButton}}">
+                取消
+              </van-button>
+              <van-button size="small" type="primary" data-id="{{item.id}}" bind:click="handleClickComplete">
+                完成
+              </van-button>
+            </view>
+          </view>
+        </van-cell>
+      </van-cell-group>
+    </block>
+  </block>
+</view>

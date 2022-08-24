@@ -9,7 +9,11 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"]
+    "baseUrl": ".",
+    "paths": {
+      "@vant/weapp/*": ["./node_modules/@vant/weapp/dist/*"]
+    },
+    "lib": ["esnext", "dom", "ES6"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

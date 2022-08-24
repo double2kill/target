@@ -6,9 +6,6 @@ import { TARGET_LIST } from '../../../../constants/api'
 import { loginUser } from '../Login/loginUser'
 import { TargetItem, TargetFormData } from '../type'
 
-import 'dayjs/locale/zh-cn'
-dayjs.locale('zh-cn')
-
 export const isAdminMode = ref(false)
 export const setIsAdminMode = (value: boolean) => { isAdminMode.value = value}
 
